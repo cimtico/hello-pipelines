@@ -1,0 +1,18 @@
+containers: {
+    hellopipelines: {
+        image: "ghcr.io/cimtico/hello-pipelines:33b76ae84ce87b852258ce4f2fe60696d557b4d6",
+        ports: publish : "3000/http"
+        env: {
+            "DB_USER": "postgres",
+            "DB_PASSWORD": "postgres"
+        }
+    },
+    db: {
+        image: "postgres:13.2-alpine",
+        ports: "5432/tcp"
+        env: {
+            "POSTGRES_USER": "postgres",
+            "POSTGRES_PASSWORD": "postgres"
+        }
+    }
+}
