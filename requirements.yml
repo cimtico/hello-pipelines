@@ -1,4 +1,26 @@
-service_name: hello_pipelines
-routing:
+service_name: HelloWorld
+cpu_limit: 1000m
+memory_limit: 1200Mi
+
+predeploy: bin/predeploy.sh
+
+routes:
   port: 3000
-  subdomain: hello
+  subdomain: app
+  path: /ui
+
+volumes:
+  - name: ship-it-worker-sidekiq-volume
+    storage: 10Gi
+    mount_path: /mnt/ship_it
+    storage_class: standard-retain
+
+jobs:
+  sidekiq:
+    cmd: bin/sidekiq
+    cpu_limit: 1000m
+    cpu_request: 200m
+    cpu_per: WORKER_CPU_SCALE_FACTOR
+    memory_limit: 2500Mi
+    memory_request: 1600Mi
+
