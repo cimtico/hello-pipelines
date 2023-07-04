@@ -1,0 +1,30 @@
+{ pkgs ? import <nixpkgs> {} }:
+  pkgs.mkShell {
+    # nativeBuildInputs is usually what you want -- tools you need to run
+    nativeBuildInputs = [ 
+      pkgs.buildPackages.ruby_3_1 
+      pkgs.buildPackages.nodejs
+      pkgs.buildPackages.yarn
+      pkgs.python3Packages.supervisor
+
+      pkgs.buildPackages.sqlite
+      ];
+    # buildInputs = [ env nodejs yarn postgresql ];
+
+    shellHook = ''
+      export GEM_HOME=$PWD/.nix-gems
+      export GEM_PATH=$GEM_HOME
+      export PATH=$GEM_HOME/bin:$PATH
+      export PATH=$PWD/bin:$PATH
+
+
+      gem list -i ^bundler$ -v 2.3.7 || gem install bundler --version=2.3.7 --no-document
+      bundle config set --local path vendor/bundle
+
+      # Mysql2 config
+      export MYSQL_BASEDIR=${pkgs.buildPackages.mariadb-connector-c.dev}
+      bundle config build.mysql2 --with-mysql-config=$MYSQL_BASEDIR/bin/mariadb_config
+
+      bundle install
+    '';
+}
