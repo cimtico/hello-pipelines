@@ -71,5 +71,6 @@ group :test do
   gem "webdrivers"
 end
 
-
+# Background jobs and cache
+gem "redis"
 gem "sidekiq"

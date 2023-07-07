@@ -8,6 +8,7 @@
       pkgs.python3Packages.supervisor
 
       pkgs.buildPackages.sqlite
+      pkgs.buildPackages.redis
       ];
     # buildInputs = [ env nodejs yarn postgresql ];
 
@@ -21,10 +22,7 @@
       gem list -i ^bundler$ -v 2.3.7 || gem install bundler --version=2.3.7 --no-document
       bundle config set --local path vendor/bundle
 
-      # Mysql2 config
-      export MYSQL_BASEDIR=${pkgs.buildPackages.mariadb-connector-c.dev}
-      bundle config build.mysql2 --with-mysql-config=$MYSQL_BASEDIR/bin/mariadb_config
-
+      export REDIS_BASE_URL=localhost
       bundle install
     '';
 }
