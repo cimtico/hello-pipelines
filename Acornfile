@@ -8,12 +8,29 @@ containers: {
             "RAILS_ENV": "development"
         }
     },
-    db: {
-        image: "postgres:13.2-alpine",
-        ports: "5432/tcp"
-        env: {
-            "POSTGRES_USER": "postgres",
-            "POSTGRES_PASSWORD": "postgres"
-        }
+    "redis":{
+      "image":"redis",
+      "ports":"6379/tcp",
+      "cmd":[
+        "--appendonly",
+        "yes"
+      ],
+      "dirs":{
+        "/data":"volume://redis"
+      }
+    },
+    "db":{
+      "image":"postgres:13.2-alpine",
+      "ports":"5432/tcp",
+      "env":{
+        "POSTGRES_USER":"postgres",
+        "POSTGRES_PASSWORD":"postgres"
+      }
     }
+},
+"volumes":{
+  "redis":{
+    "size":"250Mi",
+    "accessModes":"readWriteMany"
+  }
 }
