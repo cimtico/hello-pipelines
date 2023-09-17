@@ -35,8 +35,15 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: {{ .Values.service.internalPort }}
               protocol: TCP
+          env:
+          - name: DB_USER
+            value: postgres
+          - name: DB_PASSWORD
+            value: postgres
+          - name: RAILS_ENV
+            value: development
           livenessProbe:
             httpGet:
               path: /
