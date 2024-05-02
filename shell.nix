@@ -9,6 +9,10 @@
 
       pkgs.buildPackages.sqlite
       pkgs.buildPackages.redis
+      # Kubernetes Interaction
+      pkgs.buildPackages.kubectl
+      pkgs.buildPackages.kubectx
+      pkgs.buildPackages.kubernetes-helm
       ];
     # buildInputs = [ env nodejs yarn postgresql ];
 

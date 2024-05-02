@@ -36,3 +36,4 @@
 
 .direnv
 vendor/bundle
+.nix-gems/
