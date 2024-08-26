@@ -34,7 +34,7 @@ ENV RAILS_ENV="production" \
     BUNDLE_JOBS=4 \
     BUNDLE_RETRY=3
   
-RUN gem update --system && gem install bundler
+RUN gem update --system && gem install bundler --version=2.5.18
 
 COPY . /usr/src/app
 

@@ -24,7 +24,7 @@
       export PATH=$PWD/bin:$PATH
 
 
-      gem list -i ^bundler$ -v 2.3.7 || gem install bundler --version=2.3.7 --no-document
+      gem list -i ^bundler$ -v 2.5.18 || gem install bundler --version=2.5.18 --no-document
       bundle config set --local path vendor/bundle
 
       export REDIS_BASE_URL=localhost
