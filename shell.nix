@@ -2,7 +2,8 @@
   pkgs.mkShell {
     # nativeBuildInputs is usually what you want -- tools you need to run
     nativeBuildInputs = [ 
-      pkgs.buildPackages.ruby_3_1 
+      pkgs.buildPackages.ruby_3_2
+      pkgs.buildPackages.libyaml
       pkgs.buildPackages.nodejs
       pkgs.buildPackages.yarn
       pkgs.python3Packages.supervisor

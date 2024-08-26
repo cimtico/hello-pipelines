@@ -7,12 +7,12 @@ predeploy: bin/predeploy.sh
 routes:
   port: 3000
   subdomain: app
-  path: /ui
+  path: /
 
 volumes:
-  - name: ship-it-worker-sidekiq-volume
-    storage: 10Gi
-    mount_path: /mnt/ship_it
+  - name: image-volume
+    storage: 5Gi
+    mount_path: /mnt/pipelines
     storage_class: standard-retain
 
 jobs:
