@@ -2,7 +2,8 @@
   pkgs.mkShell {
     # nativeBuildInputs is usually what you want -- tools you need to run
     nativeBuildInputs = [ 
-      pkgs.buildPackages.ruby_3_1 
+      pkgs.buildPackages.ruby_3_2
+      pkgs.buildPackages.libyaml
       pkgs.buildPackages.nodejs
       pkgs.buildPackages.yarn
       pkgs.python3Packages.supervisor
@@ -23,7 +24,7 @@
       export PATH=$PWD/bin:$PATH
 
 
-      gem list -i ^bundler$ -v 2.3.7 || gem install bundler --version=2.3.7 --no-document
+      gem list -i ^bundler$ -v 2.5.18 || gem install bundler --version=2.5.18 --no-document
       bundle config set --local path vendor/bundle
 
       export REDIS_BASE_URL=localhost
