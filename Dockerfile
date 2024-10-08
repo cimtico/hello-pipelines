@@ -42,6 +42,8 @@ WORKDIR /usr/src/app
 
 RUN bundle install
 
+RUN bundle exec rake SECRET_KEY_BASE=1 RAILS_ENV=production assets:precompile
+
 ENTRYPOINT ["./entrypoint.sh"]
 
 EXPOSE 3000
