@@ -19,5 +19,6 @@ module HelloPipelines
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.secret_key_base = ENV["SECRET_KEY_BASE"]
+    config.logger = Logger.new(STDOUT)
   end
 end
