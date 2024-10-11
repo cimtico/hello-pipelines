@@ -2,8 +2,10 @@ service_name: HelloWorld
 cpu_limit: 1000m
 memory_limit: 1200Mi
 
-predeploy: bin/predeploy.sh
-setup: bin/setup.sh
+predeploy: 
+  command: ["bin/predeploy.sh"]
+setup: 
+  command: ["bin/setup.sh"]
 
 routes:
   port: 3000
