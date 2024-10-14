@@ -32,7 +32,11 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development" \
     LANG=C.UTF-8 \
     BUNDLE_JOBS=4 \
-    BUNDLE_RETRY=3
+    BUNDLE_RETRY=3 \
+    OTEL_EXPORTER=otlp \
+    OTEL_SERVICE_NAME=hello-pipelines \
+    OTEL_RESOURCE_ATTRIBUTES=application=sparkapp rails server
+
   
 RUN gem update --system && gem install bundler --version=2.5.18
 
