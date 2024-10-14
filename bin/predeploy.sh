@@ -1,1 +1,1 @@
-bundle exec rake db:migrate
+(bundle exec rake db:migrate:status 2>/dev/null || bundle exec rake db:setup) && bundle exec rake db:migrate

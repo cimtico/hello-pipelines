@@ -2,7 +2,10 @@ service_name: HelloWorld
 cpu_limit: 1000m
 memory_limit: 1200Mi
 
-predeploy: bin/predeploy.sh
+predeploy: 
+  command: "bin/predeploy.sh"
+setup: 
+  command: "bin/setup.sh"
 
 routes:
   port: 3000
@@ -17,7 +20,7 @@ volumes:
 
 jobs:
   sidekiq:
-    cmd: bundle exec sidekiq
+    command: bundle exec sidekiq
     cpu_limit: 1000m
     cpu_request: 200m
     cpu_per: WORKER_CPU_SCALE_FACTOR
