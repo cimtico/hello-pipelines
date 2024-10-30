@@ -58,3 +58,6 @@ end
 
 gem "sidekiq"
 gem "redis"
+gem 'opentelemetry-sdk'
+gem 'opentelemetry-exporter-otlp'
+gem 'opentelemetry-instrumentation-all'

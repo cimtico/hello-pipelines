@@ -27,12 +27,17 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
 
 # Set production environment
 ENV RAILS_ENV="production" \
+    RAILS_LOG_TO_STDOUT="1" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development" \
     LANG=C.UTF-8 \
     BUNDLE_JOBS=4 \
-    BUNDLE_RETRY=3
+    BUNDLE_RETRY=3 \
+    OTEL_EXPORTER=otlp \
+    OTEL_SERVICE_NAME=hello-pipelines \
+    OTEL_RESOURCE_ATTRIBUTES=application="sparkapp rails server"
+
   
 RUN gem update --system && gem install bundler --version=2.5.18
 

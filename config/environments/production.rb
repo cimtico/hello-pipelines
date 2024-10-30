@@ -84,7 +84,17 @@ Rails.application.configure do
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
+    logger.formatter = proc do |severity, time, progname, msg|
+      span_id = OpenTelemetry::Trace.current_span.context.hex_span_id
+      trace_id = OpenTelemetry::Trace.current_span.context.hex_trace_id
+      if defined? OpenTelemetry::Trace.current_span.name
+        operation = OpenTelemetry::Trace.current_span.name
+      else
+        operation = 'undefined'
+      end
+    
+      "#{time}, #{severity}: #{msg} - trace_id=#{trace_id} - span_id=#{span_id} - operation=#{operation}\n"
+    end
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
