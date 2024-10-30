@@ -27,6 +27,7 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
 
 # Set production environment
 ENV RAILS_ENV="production" \
+    RAILS_LOG_TO_STDOUT="1" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development" \
