@@ -25,14 +25,9 @@ if [ ! -d "$MYSQL_DATA" ] ; then
     mysql_install_db --auth-root-authentication-method=normal \
     --datadir=$MYSQL_DATA/data \
     --pid-file=$MYSQL_DATA/mysql.pid
-
-    #echo "Initializing config"
-    #cat >> "$MYSQL_DATA/postgresql.conf" <<-EOF
-    #    listen_addresses = 'localhost'
-    #    unix_socket_directories = '$MYSQL_DATA'
-EOF
+    mysqladmin --no-defaults -h127.0.0.1 --user=root password 'root'
 fi
 
 echo "Starting DB"
 exec mysqld --datadir=$MYSQL_DATA/data --pid-file=$MYSQL_DATA/mysql.pid \
-      --socket=$MYSQL_DATA/mysql.sock 2> $MYSQL_DATA/mysql.log
+      --socket=$MYSQL_DATA/mysql.sock > $MYSQL_DATA/mysql.log

@@ -8,7 +8,8 @@
       pkgs.buildPackages.yarn
       pkgs.python3Packages.supervisor
 
-      pkgs.buildPackages.sqlite
+      pkgs.buildPackages.mariadb
+      pkgs.buildPackages.mariadb-connector-c
       pkgs.buildPackages.redis
       # Kubernetes Interaction
       pkgs.buildPackages.kubectl
@@ -26,6 +27,10 @@
 
       gem list -i ^bundler$ -v 2.5.18 || gem install bundler --version=2.5.18 --no-document
       bundle config set --local path vendor/bundle
+
+      # Mysql2 config
+      export MYSQL_BASEDIR=${pkgs.buildPackages.mariadb-connector-c.dev}
+      bundle config build.mysql2 --with-mysql-config=$MYSQL_BASEDIR/bin/mariadb_config
 
       export REDIS_BASE_URL=localhost
       bundle install

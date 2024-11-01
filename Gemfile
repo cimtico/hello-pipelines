@@ -58,3 +58,7 @@ end
 
 gem "sidekiq"
 gem "redis"
+
+
+gem 'yabeda-rails'
+gem 'yabeda-prometheus'
