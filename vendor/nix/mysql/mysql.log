@@ -1,0 +1,80 @@
+
+Status information:
+
+Current dir: /home/dmatamoros/development/hello-pipelines/vendor/nix/mysql/data/
+Running threads: 0  Cached threads: 1  Stack size: 299008
+
+Key caches:
+default
+Buffer_size:     134217728
+Block_size:           1024
+Division_limit:        100
+Age_threshold:         300
+Partitions:              0
+blocks used:             0
+not flushed:             0
+w_requests:              0
+writes:                  0
+r_requests:              0
+reads:                   0
+
+
+handler status:
+read_key:           24
+read_next:           3
+read_rnd             1
+read_first:          7
+write:               2
+delete               0
+update:              1
+
+Table status:
+Opened tables:         23
+Open tables:           16
+Open files:            29
+Open streams:           4
+
+Alarm status:
+Active alarms:   0
+Max used alarms: 0
+Next alarm time: 0
+
+Memory status:
+Non-mmapped space allocated from system: 9961472
+Number of free chunks:                   76
+Number of fastbin blocks:                63
+Number of mmapped regions:               9
+Space in mmapped regions:                41951232
+Maximum total allocated space:           0
+Space available in freed fastbin blocks: 3664
+Total allocated space:                   7735360
+Total free space:                        2226112
+Top-most, releasable space:              48432
+Estimated memory (with thread stack):    52211712
+Global memory allocated by server:       443266408
+Memory allocated by threads:             0
+
+
+
+Events status:
+LLA = Last Locked At  LUA = Last Unlocked At
+WOC = Waiting On Condition  DL = Data Locked
+
+Event scheduler status:
+State      : INITIALIZED
+Thread id  : 0
+LLA        : n/a:0
+LUA        : n/a:0
+WOC        : NO
+Workers    : 0
+Executed   : 0
+Data locked: NO
+
+Event queue status:
+Element count   : 0
+Data locked     : NO
+Attempting lock : NO
+LLA             : init_queue:141
+LUA             : init_queue:151
+WOC             : NO
+Next activation : never

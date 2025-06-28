@@ -1,10 +1,8 @@
 service_name: HelloWorld
-cpu_limit: 1000m
-memory_limit: 1200Mi
 
-predeploy: 
+predeploy:
   command: "bin/predeploy.sh"
-setup: 
+setup:
   command: "bin/setup.sh"
 
 routes:
@@ -30,3 +28,10 @@ jobs:
     #liveness_port:
     #liveness_url:
 
+resources:
+  requests:
+    cpu: 200m
+    memory: 1200Mi
+  limits:
+    cpu: 1000m
+    memory: 1200Mi
