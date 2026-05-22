@@ -1,10 +1,46 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @todo.title.presence || "Todo" %>
 
-<%= render @todo %>
+<div class="todos-page">
+  <div class="page-header" style="margin-bottom: 1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+    <div>
+      <h1 style="font-size:1.6rem; font-weight:700; color: var(--text);">Todo Detail</h1>
+      <p style="color: var(--text-muted); font-size:0.9rem; margin-top:0.2rem;">Viewing task info</p>
+    </div>
+    <div style="display:flex; gap:0.75rem;">
+      <%= link_to "Edit", edit_todo_path(@todo), class: "btn btn-ghost" %>
+      <%= link_to "Back to Todos", todos_path, class: "btn btn-ghost" %>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this todo", edit_todo_path(@todo) %> |
-  <%= link_to "Back to todos", todos_path %>
+  <% if notice.present? %>
+    <div class="notice"><%= notice %></div>
+  <% end %>
 
-  <%= button_to "Destroy this todo", @todo, method: :delete %>
+  <div class="todo-detail">
+    <div class="detail-row">
+      <span class="detail-key">Title</span>
+      <span class="detail-val"><%= @todo.title.presence || '—' %></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Description</span>
+      <span class="detail-val"><%= @todo.description.presence || '—' %></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Status</span>
+      <span class="detail-val">
+        <span class="todo-badge <%= @todo.done? ? 'badge-done' : 'badge-pending' %>">
+          <%= @todo.done? ? 'Done' : 'Pending' %>
+        </span>
+      </span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Created</span>
+      <span class="detail-val" style="color: var(--text-muted); font-size:0.85rem;"><%= @todo.created_at.strftime("%B %-d, %Y at %H:%M") %></span>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+    <%= link_to "Edit", edit_todo_path(@todo), class: "btn btn-primary" %>
+    <%= link_to "Delete", @todo, data: { turbo_method: :delete, turbo_confirm: "Delete this todo?" }, class: "btn btn-danger" %>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HelloPipelines</title>
+    <title><%= content_for?(:title) ? "#{yield :title} — Hello Pipelines" : "Hello Pipelines" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,21 @@
   </head>
 
   <body>
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">
+        <span class="brand-icon">&#9654;</span>
+        Hello Pipelines
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="/" class="<%= controller_name == 'home' ? 'active' : '' %>">Dashboard</a></li>
+        <li><a href="/todos" class="<%= controller_name == 'todos' ? 'active' : '' %>">Todos</a></li>
+      </ul>
+    </nav>
+
     <%= yield %>
-    <h2>Feature 6!</h2>
+
+    <footer class="dashboard-footer">
+      Hello Pipelines &mdash; Feature 6
+    </footer>
   </body>
 </html>

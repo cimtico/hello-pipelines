@@ -1,16 +1,61 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Todos" %>
 
-<h1>Todos</h1>
+<div class="todos-page">
+  <div class="page-header" style="margin-bottom: 1.5rem;">
+    <div>
+      <h1 style="font-size:1.6rem; font-weight:700; background: linear-gradient(90deg, #10b981, #3b82f6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+        Todos
+      </h1>
+      <p style="color: var(--text-muted); font-size:0.9rem; margin-top:0.2rem;">Manage your tasks</p>
+    </div>
+    <%= link_to "+ New Todo", new_todo_path, class: "btn btn-primary" %>
+  </div>
 
-<div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
+  <% if notice.present? %>
+    <div class="notice"><%= notice %></div>
+  <% end %>
+
+  <% if @todos.any? %>
+    <table class="todos-table">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @todos.each do |todo| %>
+          <tr>
+            <td>
+              <span class="todo-badge <%= todo.done? ? 'badge-done' : 'badge-pending' %>">
+                <%= todo.done? ? 'Done' : 'Pending' %>
+              </span>
+            </td>
+            <td>
+              <span class="<%= todo.done? ? 'todo-title done' : '' %>">
+                <%= todo.title.presence || '—' %>
+              </span>
+            </td>
+            <td style="color: var(--text-muted); font-size: 0.85rem;">
+              <%= todo.description.presence || '—' %>
+            </td>
+            <td>
+              <div class="todo-actions">
+                <%= link_to "View", todo, class: "btn btn-ghost" %>
+                <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-ghost" %>
+                <%= link_to "Delete", todo, data: { turbo_method: :delete, turbo_confirm: "Delete this todo?" }, class: "btn btn-danger" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="card" style="text-align:center; padding: 3rem;">
+      <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1rem;">No todos yet.</p>
+      <%= link_to "Create your first todo", new_todo_path, class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New todo", new_todo_path %>
