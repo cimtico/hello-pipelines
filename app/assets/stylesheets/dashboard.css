@@ -1,12 +1,12 @@
 /* ===== Dashboard Styles ===== */
 
 :root {
-  --primary:   #7c3aed;
+  --primary:   #C9991A;
   --primary-dark: #42226B;
   --success:   #10b981;
   --warning:   #f59e0b;
   --danger:    #ef4444;
-  --info:      #a78bfa;
+  --info:      #F0C878;
   --bg:        #0d0a14;
   --bg-card:   #1a1126;
   --bg-card2:  #231535;
@@ -166,10 +166,10 @@ body {
   line-height: 1;
 }
 
-.stat-card.purple .stat-value { color: #c4b5fd; }
+.stat-card.purple .stat-value { color: #F0C878; }
 .stat-card.green  .stat-value { color: #6ee7b7; }
 .stat-card.amber  .stat-value { color: #fde68a; }
-.stat-card.blue   .stat-value { color: #ddd6fe; }
+.stat-card.blue   .stat-value { color: #F7DFA0; }
 
 .stat-sub {
   font-size: 0.8rem;
@@ -349,7 +349,7 @@ body {
 
 .fill-purple { background: linear-gradient(90deg, var(--primary-dark), var(--primary)); }
 .fill-green  { background: linear-gradient(90deg, var(--success), #34d399); }
-.fill-blue   { background: linear-gradient(90deg, var(--info), #c4b5fd); }
+.fill-blue   { background: linear-gradient(90deg, var(--info), #F7DFA0); }
 
 /* ===== Quick Actions ===== */
 .quick-actions {
@@ -393,9 +393,9 @@ body {
   justify-content: center;
 }
 
-.icon-purple { background: rgba(124,58,237,0.2); color: #c4b5fd; }
+.icon-purple { background: rgba(201,153,26,0.2); color: #F0C878; }
 .icon-green  { background: rgba(16,185,129,0.2); color: #6ee7b7; }
-.icon-blue   { background: rgba(167,139,250,0.2); color: #ddd6fe; }
+.icon-blue   { background: rgba(240,200,120,0.2); color: #F7DFA0; }
 .icon-amber  { background: rgba(245,158,11,0.2); color: #fde68a; }
 
 /* ===== Status Indicators ===== */
@@ -420,7 +420,7 @@ body {
 }
 
 .pill-green  { background: rgba(16,185,129,0.15); color: #6ee7b7; }
-.pill-blue   { background: rgba(167,139,250,0.15); color: #ddd6fe; }
+.pill-blue   { background: rgba(240,200,120,0.15); color: #F7DFA0; }
 .pill-amber  { background: rgba(245,158,11,0.15); color: #fde68a; }
 .pill-red    { background: rgba(239,68,68,0.15);  color: #fca5a5; }
 
