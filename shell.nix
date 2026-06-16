@@ -8,7 +8,7 @@
       pkgs.buildPackages.yarn
       pkgs.python3Packages.supervisor
 
-      pkgs.buildPackages.sqlite
+      pkgs.buildPackages.postgresql
       pkgs.buildPackages.redis
       # Kubernetes Interaction
       pkgs.buildPackages.kubectl
