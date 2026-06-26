@@ -12,33 +12,33 @@ class TodosTest < ApplicationSystemTestCase
 
   test "should create todo" do
     visit todos_url
-    click_on "New todo"
+    click_on "+ New Todo"
 
     fill_in "Description", with: @todo.description
-    check "Done" if @todo.done
+    check "Mark as done" if @todo.done
     fill_in "Title", with: @todo.title
     click_on "Create Todo"
 
     assert_text "Todo was successfully created"
-    click_on "Back"
+    click_on "Back to Todos"
   end
 
   test "should update Todo" do
     visit todo_url(@todo)
-    click_on "Edit this todo", match: :first
+    click_on "Edit", match: :first
 
     fill_in "Description", with: @todo.description
-    check "Done" if @todo.done
+    check "Mark as done" if @todo.done
     fill_in "Title", with: @todo.title
     click_on "Update Todo"
 
     assert_text "Todo was successfully updated"
-    click_on "Back"
+    click_on "Back to Todos"
   end
 
   test "should destroy Todo" do
     visit todo_url(@todo)
-    click_on "Destroy this todo", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Todo was successfully destroyed"
   end
